@@ -84,3 +84,22 @@ describe('ERROR HANDLING - GET /api/recipes', () => {
 		});
 	});
 });
+
+describe('GET /api/recipes/:recipe_id', () => {
+	test('200: responds with a recipe object, based on recope ID', async () => {
+		const { body } = await request.get('/api/recipes/recipe-88').expect(200);
+		expect(body.recipe).toBeInstanceOf(Array);
+		expect(body.recipe).toEqual([
+			{
+				id: 'recipe-88',
+				imageUrl: 'http://www.images.com/12',
+				instructions: 'blend with oat milk and ice, sprinkle with salt',
+				ingredients: [
+					{ name: 'blueberries', grams: 114 },
+					{ name: 'coffee', grams: 20 },
+					{ name: 'kale', grams: 48 },
+				],
+			},
+		]);
+	});
+});
