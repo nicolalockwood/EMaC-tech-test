@@ -1,29 +1,30 @@
 {
-  "name": "r2-tech-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "dev": "npx nodemon listen.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/northcoders/r2-tech-test.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/northcoders/r2-tech-test/issues"
-  },
-  "homepage": "https://github.com/northcoders/r2-tech-test#readme",
-  "dependencies": {
-    "express": "^4.17.2",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "jest": "^27.5.1",
-    "supertest": "^6.2.2"
-  }
+	"name": "r2-tech-test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest api.test.js",
+		"dev": "npx nodemon listen.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/northcoders/r2-tech-test.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/northcoders/r2-tech-test/issues"
+	},
+	"homepage": "https://github.com/northcoders/r2-tech-test#readme",
+	"dependencies": {
+		"express": "^4.17.2",
+		"fs": "^0.0.1-security",
+		"lodash": "^4.17.21"
+	},
+	"devDependencies": {
+		"jest": "^27.5.1",
+		"supertest": "^6.2.2"
+	}
 }
