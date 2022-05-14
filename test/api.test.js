@@ -103,3 +103,10 @@ describe('GET /api/recipes/:recipe_id', () => {
 		]);
 	});
 });
+
+describe('ERROR HANDLING - GET /api/recipes/:recipe_id', () => {
+	test('404: return "Path not found" error when invalid URL is passed', async () => {
+		const { body } = await request.get('/api/recipes/badpath').expect(404);
+		expect(body.msg).toEqual('Recipe not found');
+	});
+});

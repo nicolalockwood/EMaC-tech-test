@@ -48,9 +48,13 @@ exports.selectRecipes = (exclude_ingredients) => {
 exports.selectRecipesByID = (id) => {
 	return fs.readFile('./data/data.json', 'utf8').then((data) => {
 		const recipes = JSON.parse(data);
+
 		const singleRecipe = recipes.filter((recipe) => {
 			return recipe.id === id;
 		});
+		if (singleRecipe.length === 0) {
+			return Promise.reject({ msg: 'Recipe not found', status: 404 });
+		}
 		return singleRecipe;
 	});
 };

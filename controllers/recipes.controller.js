@@ -16,6 +16,7 @@ exports.getRecipesByID = (req, res, next) => {
 
 	return selectRecipesByID(recipe_id)
 		.then((recipe) => {
+			console.log(recipe);
 			res.status(200).send({ recipe });
 		})
 		.catch((err) => {
