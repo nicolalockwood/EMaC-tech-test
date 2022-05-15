@@ -84,3 +84,50 @@ describe('ERROR HANDLING - GET /api/recipes', () => {
 		});
 	});
 });
+
+describe('GET /api/recipes/:recipe_id', () => {
+	test('200: responds with a recipe object, based on recope ID', async () => {
+		const { body } = await request.get('/api/recipes/recipe-88').expect(200);
+		expect(body.recipe).toBeInstanceOf(Array);
+		expect(body.recipe).toEqual([
+			{
+				id: 'recipe-88',
+				imageUrl: 'http://www.images.com/12',
+				instructions: 'blend with oat milk and ice, sprinkle with salt',
+				ingredients: [
+					{ name: 'blueberries', grams: 114 },
+					{ name: 'coffee', grams: 20 },
+					{ name: 'kale', grams: 48 },
+				],
+			},
+		]);
+	});
+});
+
+describe('ERROR HANDLING - GET /api/recipes/:recipe_id', () => {
+	test('404: return "Path not found" error when valid URL that isnt available is passed', async () => {
+		const { body } = await request.get('/api/recipes/badpath').expect(404);
+		expect(body.msg).toEqual('Recipe not found');
+	});
+});
+
+// describe('POST api/recipes', () => {
+// 	test('201: responds with an object of a new recipe based on infomation passed from client', async () => {
+// 		const recipeUpdate = {
+// 			imageUrl: 'http://www.images.com/101',
+// 			instructions: 'Whizz in the blender with a large and full of ice',
+// 			ingredients: [
+// 				{ name: 'blueberries', grams: 150 },
+// 				{ name: 'lemon juice', grams: 100 },
+// 				{ name: 'strawberries', grams: 100 },
+// 				{ name: 'love', grams: 500 },
+// 			],
+// 		};
+// 		const { body } = await request
+// 			.post('/api/recipes')
+// 			.send(recipeUpdate)
+// 			.expect(201);
+// 		expect(body.newRecipe).toBeInstanceOf(Object);
+// 		expect(body.newRecipe).toMatchObject({ id: 'recipe-101' });
+// 	});
+// });

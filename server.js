@@ -14,10 +14,10 @@ server.use((err, req, res, next) => {
 
 //Handle Unexpected errors
 server.use((err, req, res, next) => {
-	// console.log(err);
 	res.status(500).send({ msg: 'Internal Server Error' });
 });
 
+//Handle Incorrect wildcard url
 server.all('/*', (req, res) => {
 	res.status(404).send({ msg: 'Path not found' });
 });
